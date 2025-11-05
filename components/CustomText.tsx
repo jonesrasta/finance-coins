@@ -1,17 +1,8 @@
 import React from "react";
 import { Text as RNText, TextProps } from "react-native";
 
-// 🔤 As variantes de família: apenas Sombra (padrão) e Safiro (especial)
+type FontWeight = "Thin" | "Light" | "Regular" | "Medium" | "Bold" | "Poster";
 type FontVariant = "Sombra" | "Safiro";
-
-// 🔠 Pesos reais da pasta Sombra
-type FontWeight =
-  | "Thin"
-  | "Light"
-  | "Regular"
-  | "Medium"
-  | "Bold"
-  | "Poster";
 
 interface CustomTextProps extends TextProps {
   weight?: FontWeight;
@@ -24,13 +15,11 @@ export function CustomText({
   variant = "Sombra",
   ...props
 }: CustomTextProps) {
-  let fontFamily: string;
+  let fontFamily = "";
 
   if (variant === "Safiro") {
-    // 👇 Usa a fonte especial Safiro
     fontFamily = "Safiro-Medium";
   } else {
-    // 👇 Usa as fontes Sombra conforme sua pasta
     fontFamily = `Sombra-${weight}`;
   }
 

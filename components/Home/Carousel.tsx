@@ -1,17 +1,25 @@
-import React, { useMemo } from "react";
-import { View, Text, StyleSheet, ScrollView, Dimensions } from "react-native";
+import React, { useEffect, useState } from "react";
+import {
+  View,
+  Text,
+  StyleSheet,
+  ScrollView,
+  Dimensions,
+  ActivityIndicator,
+} from "react-native";
 import Svg, { Path, Line } from "react-native-svg";
 import type { Period } from "./Hero";
 
 const { width } = Dimensions.get("window");
 const CARD_WIDTH = width * 0.8;
+const GRAPH_HEIGHT = 128;
+const GRAPH_PADDING = 34;
 
 type CryptoItem = {
   symbol: string;
   name: string;
   color: string;
-  price: number;
-  rate: string;
+  pair: string; // par de trading para Binance
 };
 
 type Props = {
@@ -19,23 +27,76 @@ type Props = {
 };
 
 const CRYPTOS: CryptoItem[] = [
-  { symbol: "BTC", name: "Bitcoin", color: "#C3FF5A", price: 92882.4, rate: "1 BTC = 66k USD" },
-  { symbol: "ETH", name: "Ethereum", color: "#A37CFF", price: 4821.5, rate: "1 ETH = 3.4k USD" },
-  { symbol: "SOL", name: "Solana", color: "#00FFA3", price: 210.3, rate: "1 SOL = 150 USD" },
+  { symbol: "BTC", name: "Bitcoin", color: "#C3FF5A", pair: "BTCUSDT" },
+  { symbol: "ETH", name: "Ethereum", color: "#A37CFF", pair: "ETHUSDT" },
+  { symbol: "SOL", name: "Solana", color: "#00FFA3", pair: "SOLUSDT" },
+  { symbol: "BNB", name: "BNB", color: "#F3BA2F", pair: "BNBUSDT" },
+  { symbol: "XRP", name: "Ripple", color: "#00AAFF", pair: "XRPUSDT" },
+  { symbol: "DOT", name: "Polkadot", color: "#E6007A", pair: "DOTUSDT" },
+  { symbol: "LTC", name: "Litecoin", color: "#B8B8B8", pair: "LTCUSDT" },
+  { symbol: "ADA", name: "Cardano", color: "#0033AD", pair: "ADAUSDT" },
+  { symbol: "DOGE", name: "Dogecoin", color: "#C2A633", pair: "DOGEUSDT" },
+  { symbol: "AVAX", name: "Avalanche", color: "#E84142", pair: "AVAXUSDT" },
+  { symbol: "MATIC", name: "Polygon", color: "#8247E5", pair: "MATICUSDT" },
+  //   { symbol: "LINK", name: "Chainlink", color: "#2A5ADA", pair: "LINKUSDT" },
+  //   { symbol: "UNI", name: "Uniswap", color: "#FF007A", pair: "UNIUSDT" },
+  //   { symbol: "ATOM", name: "Cosmos", color: "#5050F5", pair: "ATOMUSDT" },
+  //   { symbol: "OP", name: "Optimism", color: "#FF0420", pair: "OPUSDT" },
+  //   { symbol: "ARB", name: "Arbitrum", color: "#28A0F0", pair: "ARBUSDT" },
+  //   { symbol: "NEAR", name: "Near Protocol", color: "#000000", pair: "NEARUSDT" },
+  //   { symbol: "APT", name: "Aptos", color: "#FFFFFF", pair: "APTUSDT" },
+  //   { symbol: "ETC", name: "Ethereum Classic", color: "#34C759", pair: "ETCUSDT" },
 ];
 
-const generateData = (period: Period): number[] => {
-  const points: Record<Period, number[]> = {
-    "24h": [40, 70, 50, 80, 65, 85, 90],
-    Week: [60, 90, 75, 120, 110, 140, 150],
-    Month: [40, 70, 90, 130, 120, 150, 170],
-    "6 Month": [60, 100, 120, 180, 200, 160, 190],
-    "1 Year": [80, 120, 160, 200, 240, 300, 280],
-  };
-  return points[period];
+// Mapeia períodos para intervalos da Binance
+const INTERVAL_MAP: Record<Period, string> = {
+  "24h": "15m",
+  Week: "1h",
+  Month: "4h",
+  "6 Month": "1d",
+  "1 Year": "1w",
 };
 
 const Carousel = ({ selectedPeriod }: Props) => {
+  const [prices, setPrices] = useState<Record<string, number[]>>({});
+  const [loading, setLoading] = useState(true);
+
+  // Buscar dados da Binance
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        setLoading(true);
+        const interval = INTERVAL_MAP[selectedPeriod];
+        const responses = await Promise.all(
+          CRYPTOS.map(async (coin) => {
+            const url = `https://api.binance.com/api/v3/klines?symbol=${coin.pair}&interval=${interval}&limit=50`;
+            const res = await fetch(url);
+            const data = await res.json();
+            const closes = data.map((k: any) => parseFloat(k[4])); // preço de fechamento
+            return { [coin.symbol]: closes };
+          })
+        );
+
+        const merged = Object.assign({}, ...responses);
+        setPrices(merged);
+      } catch (e) {
+        console.error("Erro ao buscar dados Binance:", e);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchData();
+  }, [selectedPeriod]);
+
+  if (loading) {
+    return (
+      <View style={{ padding: 40 }}>
+        <ActivityIndicator size="large" color="#C3FF5A" />
+      </View>
+    );
+  }
+
   return (
     <ScrollView
       horizontal
@@ -44,15 +105,21 @@ const Carousel = ({ selectedPeriod }: Props) => {
       contentContainerStyle={styles.scrollContainer}
     >
       {CRYPTOS.map((coin) => {
-        // eslint-disable-next-line react-hooks/rules-of-hooks
-        const data = useMemo(() => generateData(selectedPeriod), [selectedPeriod]);
+        const data = prices[coin.symbol] || [];
+        if (data.length === 0) return null;
+
         const maxY = Math.max(...data);
         const minY = Math.min(...data);
 
         const pathData = data
           .map((y, i) => {
-            const x = (i / (data.length - 1)) * CARD_WIDTH;
-            const yPos = 120 - ((y - minY) / (maxY - minY)) * 100;
+            const x =
+              GRAPH_PADDING +
+              (i / (data.length - 1)) * (CARD_WIDTH - GRAPH_PADDING * 2);
+            const yPos =
+              GRAPH_HEIGHT -
+              GRAPH_PADDING -
+              ((y - minY) / (maxY - minY)) * (GRAPH_HEIGHT - GRAPH_PADDING * 2);
             return `${i === 0 ? "M" : "L"}${x},${yPos}`;
           })
           .join(" ");
@@ -63,10 +130,12 @@ const Carousel = ({ selectedPeriod }: Props) => {
           <View style={styles.card} key={coin.symbol}>
             <View style={styles.header}>
               <Text style={styles.coinSymbol}>{coin.symbol}</Text>
-              <Text style={styles.rate}>{coin.rate}</Text>
+              <Text style={styles.rate}>{coin.name}</Text>
             </View>
 
-            <Text style={styles.price}>${coin.price.toLocaleString()}</Text>
+            <Text style={styles.price}>
+              ${data[data.length - 1].toLocaleString()}
+            </Text>
             <Text
               style={[
                 styles.change,
@@ -77,7 +146,7 @@ const Carousel = ({ selectedPeriod }: Props) => {
               {change.toFixed(2)}%
             </Text>
 
-            <Svg height="130" width={CARD_WIDTH}>
+            <Svg height={GRAPH_HEIGHT} width={CARD_WIDTH}>
               <Path
                 d={pathData}
                 fill="none"
@@ -89,7 +158,7 @@ const Carousel = ({ selectedPeriod }: Props) => {
                 x1={CARD_WIDTH / 2}
                 y1={0}
                 x2={CARD_WIDTH / 2}
-                y2={130}
+                y2={GRAPH_HEIGHT}
                 stroke={coin.color + "55"}
                 strokeDasharray="4"
                 strokeWidth={1}
@@ -109,7 +178,7 @@ const styles = StyleSheet.create({
   },
   card: {
     width: CARD_WIDTH,
-    height: 360, 
+    height: 320,
     backgroundColor: "#121712",
     borderRadius: 20,
     padding: 20,

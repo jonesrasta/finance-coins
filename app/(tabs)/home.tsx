@@ -9,13 +9,12 @@ import Carousel from "../../components/Home/Carousel";
 // Tipos de período disponíveis
 export type Period = "24h" | "Week" | "Month" | "6 Month" | "1 Year";
 
-export default function HomeScreen() {
-  const [selectedPeriod ] = useState<Period>("Week");
+export default function Home() {
+  const [selectedPeriod, setSelectedPeriod] = useState<Period>("Week");
 
   return (
     <View style={styles.container}>
-      <Hero />
-
+      <Hero selectedPeriod={selectedPeriod} onSelectPeriod={setSelectedPeriod} />
       <Carousel selectedPeriod={selectedPeriod} />
 
       {/* <BitcoinChart />

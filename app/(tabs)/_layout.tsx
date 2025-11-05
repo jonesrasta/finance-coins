@@ -87,7 +87,7 @@ export default function TabsLayout() {
             height: 76,
             // borderRadius: 50,
             paddingBottom: 0,
-            paddingTop: 4,
+            paddingTop: 2,
             paddingHorizontal: 20,
             borderCurve: "continuous",
             backgroundColor:
@@ -110,7 +110,7 @@ export default function TabsLayout() {
           tabBarInactiveTintColor: "#aaa",
           tabBarLabelStyle: {
             fontSize: 12,
-            marginBottom: 4,
+            marginBottom: 18,
             marginTop: 3,
             fontFamily: "Sombra",
             fontWeight: "semibold",
@@ -123,9 +123,9 @@ export default function TabsLayout() {
             title: "Home",
             tabBarIcon: ({ color, focused }) =>
               focused ? (
-                <Octicons name="home-fill" color={color} size={28} />
+                <Octicons name="home-fill" color={color} size={24} />
               ) : (
-                <Octicons name="home" color={color} size={28} />
+                <Octicons name="home" color={color} size={24} />
               ),
           }}
         />

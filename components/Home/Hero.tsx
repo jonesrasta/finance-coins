@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { View, Text, TouchableOpacity, StyleSheet } from "react-native";
 
 
@@ -6,13 +6,17 @@ export type Period = "24h" | "Week" | "Month" | "6 Month" | "1 Year";
 
 const PERIODS: Period[] = ["24h", "Week", "Month", "6 Month", "1 Year"];
 
-const Hero = () => {
-  const [selectedPeriod, setSelectedPeriod] = useState<Period>("Week");
+type Props = {
+  selectedPeriod: Period;
+  onSelectPeriod: (period: Period) => void;
+};
 
+const Hero = ({ selectedPeriod, onSelectPeriod }: Props) => {
   return (
     <View style={styles.container}>
       <Text style={styles.title}>
-        All Your Crypto,{"\n"}One Powerful Wallet.
+        {/* All Your Crypto,{"\n"}One Powerful Wallet. */}
+        Everything about crypto in one place.
       </Text>
 
       <View style={styles.periodRow}>
@@ -23,7 +27,7 @@ const Hero = () => {
               styles.periodButton,
               selectedPeriod === period && styles.activeButton,
             ]}
-            onPress={() => setSelectedPeriod(period)}
+            onPress={() => onSelectPeriod(period)}
           >
             <Text
               style={[
@@ -36,8 +40,6 @@ const Hero = () => {
           </TouchableOpacity>
         ))}
       </View>
-
-      
     </View>
   );
 };
@@ -47,16 +49,15 @@ const styles = StyleSheet.create({
     backgroundColor: "#0B0F0A",
     paddingHorizontal: 20,
     paddingTop: 48,
+    marginTop: 20,
+    marginBottom: 10,
   },
   title: {
     fontSize: 50,
     fontWeight: "700",
     color: "#FFFFFF",
-    lineHeight: 48,
-    textShadowColor: "rgba(0,0,0,0.8)",
-    textShadowOffset: { width: 0, height: 2 },
-    textShadowRadius: 4,
-    marginBottom: 24,
+    lineHeight: 52,
+    marginBottom: 28,
   },
   periodRow: {
     flexDirection: "row",

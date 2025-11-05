@@ -2,7 +2,7 @@ import { StyleSheet, View, ScrollView } from "react-native";
 import BitcoinChart from "@/components/Home/BitcoinChart";
 import CryptoList from "@/components/Home/CryptoList";
 
-export default function TabTwoScreen() {
+export default function Bitcoin() {
   return (
     <ScrollView
       style={styles.scroll}

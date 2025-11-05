@@ -75,16 +75,19 @@ export default function CryptoList(): React.JSX.Element {
   }
 
   return (
-    <View style={styles.container}>
-      <Text style={styles.heading}>Top daily gainers</Text>
+     <View style={styles.container}>
+    <Text style={styles.heading}>Top daily gainers</Text>
 
-      <FlatList
-        data={data}
-        keyExtractor={(i) => i.symbol}
-        ItemSeparatorComponent={() => <View style={{ height: 10 }} />}
-        renderItem={({ item }) => <ListRow item={item} />}
-      />
-    </View>
+    <FlatList
+      data={data}
+      keyExtractor={(i) => i.symbol}
+      ItemSeparatorComponent={() => <View style={{ height: 10 }} />}
+      renderItem={({ item }) => <ListRow item={item} />}
+      showsVerticalScrollIndicator={false}
+      contentContainerStyle={{ paddingBottom: 24 }}
+      scrollEnabled={false} 
+    />
+  </View>
   );
 }
 
@@ -131,7 +134,7 @@ function ListRow({ item }: { item: Row }) {
 }
 
 const styles = StyleSheet.create({
-  container: { backgroundColor: "#222222ff", borderRadius: 18, padding: 16 },
+  container: { backgroundColor: "#121712", borderRadius: 18, padding: 16 },
   heading: { color: "#FFF", fontSize: 20, fontWeight: "700", marginBottom: 8 },
   row: {
     flexDirection: "row",

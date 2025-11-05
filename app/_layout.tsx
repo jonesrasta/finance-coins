@@ -7,6 +7,7 @@ import { SafeAreaView } from "react-native-safe-area-context";
 import TopNavbar from "@/components/ui/TopNavbar";
 import { useColorScheme } from "@/hooks/use-color-scheme";
 
+
 export const unstable_settings = {
   anchor: "(tabs)",
 };
@@ -16,6 +17,8 @@ export default function RootLayout() {
   const segments = useSegments() as string[];
 
   const hideNavbar = segments.includes("profile"); 
+
+
 
   return (
     <ThemeProvider value={colorScheme === "dark" ? DarkTheme : DefaultTheme}>
