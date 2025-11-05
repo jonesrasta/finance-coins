@@ -1,35 +1,205 @@
-import { Tabs } from 'expo-router';
-import React from 'react';
+import React, { useRef } from "react";
+// import MaterialIcons from "@expo/vector-icons/MaterialIcons";
+import { BlurView } from "expo-blur";
+import { Tabs } from "expo-router";
+import { StyleSheet, Platform, Animated, Pressable, View } from "react-native";
+import {
+  Foundation,
+  Ionicons,
+  MaterialCommunityIcons,
+  Octicons,
+} from "@expo/vector-icons";
 
-import { HapticTab } from '@/components/haptic-tab';
-import { IconSymbol } from '@/components/ui/icon-symbol';
-import { Colors } from '@/constants/theme';
-import { useColorScheme } from '@/hooks/use-color-scheme';
+function AnimatedTabButton({ children, onPress, style }: any) {
+  const scale = useRef(new Animated.Value(1)).current;
 
-export default function TabLayout() {
-  const colorScheme = useColorScheme();
+  const handlePressIn = () => {
+    Animated.spring(scale, {
+      toValue: 0.85,
+      useNativeDriver: true,
+      speed: 30,
+    }).start();
+  };
+
+  const handlePressOut = () => {
+    Animated.spring(scale, {
+      toValue: 1,
+      useNativeDriver: true,
+      speed: 30,
+    }).start();
+  };
 
   return (
-    <Tabs
-      screenOptions={{
-        tabBarActiveTintColor: Colors[colorScheme ?? 'light'].tint,
-        headerShown: false,
-        tabBarButton: HapticTab,
-      }}>
-      <Tabs.Screen
-        name="index"
-        options={{
-          title: 'Home',
-          tabBarIcon: ({ color }) => <IconSymbol size={28} name="house.fill" color={color} />,
+    <Pressable
+      onPress={onPress}
+      onPressIn={handlePressIn}
+      onPressOut={handlePressOut}
+      style={[style, { flex: 1 }]}
+    >
+      <Animated.View
+        style={{
+          flex: 1,
+          alignItems: "center",
+          justifyContent: "center",
+          transform: [{ scale }],
         }}
-      />
-      <Tabs.Screen
-        name="explore"
-        options={{
-          title: 'Explore',
-          tabBarIcon: ({ color }) => <IconSymbol size={28} name="paperplane.fill" color={color} />,
+      >
+        {children}
+      </Animated.View>
+    </Pressable>
+  );
+}
+
+export default function TabsLayout() {
+  return (
+    <View style={{ flex: 1, justifyContent:"center"}}>
+      <Tabs
+        screenOptions={{
+          headerShown: false,
+          tabBarShowLabel: true,
+          tabBarButton: (props) => <AnimatedTabButton {...props} />,
+          tabBarBackground: () =>
+            Platform.OS === "ios" ? (
+              <BlurView
+                intensity={60}
+                tint="default"
+                style={[
+                  StyleSheet.absoluteFill,
+                  { borderRadius: 0, overflow: "hidden" },
+                ]}
+              />
+            ) : (
+              <View
+                style={[
+                  StyleSheet.absoluteFill,
+                  {
+                    backgroundColor: "rgba(29, 29, 29, 0.84)",
+                    borderRadius: 30,
+                  },
+                ]}
+              />
+            ),
+          tabBarStyle: {
+            position: "absolute",
+            bottom: Platform.OS === "ios" ? 0 : 18,
+            left: 20,
+            right: 20,
+            height: 76,
+            // borderRadius: 50,
+            paddingBottom: 0,
+            paddingTop: 4,
+            paddingHorizontal: 20,
+            borderCurve: "continuous",
+            backgroundColor:
+              Platform.OS === "ios"
+                ? "rgba(255, 255, 255, 0.11)"
+                : "rgba(29, 29, 29, 0.86)",
+            borderWidth: 0.5,
+            borderColor:
+              Platform.OS === "ios"
+                ? "rgba(255, 255, 255, 0.09)"
+                : "rgba(255, 255, 255, 0.03)",
+            shadowColor: "#000",
+            shadowOffset: { width: 0, height: 6 },
+            shadowOpacity: 0.2,
+            shadowRadius: 10,
+            elevation: 10,
+            overflow: "hidden",
+          },
+          tabBarActiveTintColor: "#fff",
+          tabBarInactiveTintColor: "#aaa",
+          tabBarLabelStyle: {
+            fontSize: 12,
+            marginBottom: 4,
+            marginTop: 3,
+            fontFamily: "Sombra",
+            fontWeight: "semibold",
+          },
         }}
-      />
-    </Tabs>
+      >
+        <Tabs.Screen
+          name="home"
+          options={{
+            title: "Home",
+            tabBarIcon: ({ color, focused }) =>
+              focused ? (
+                <Octicons name="home-fill" color={color} size={28} />
+              ) : (
+                <Octicons name="home" color={color} size={28} />
+              ),
+          }}
+        />
+
+        <Tabs.Screen
+          name="finance"
+          options={{
+            title: "Finance",
+            tabBarIcon: ({ color, focused }) =>
+              focused ? (
+                <MaterialCommunityIcons
+                  name="finance"
+                  size={26}
+                  color={color}
+                />
+              ) : (
+                <MaterialCommunityIcons
+                  name="finance"
+                  size={26}
+                  color={color}
+                />
+              ),
+          }}
+        />
+        <Tabs.Screen
+          name="bitcoin"
+          options={{
+            title: "Bitcoin",
+            tabBarIcon: ({ color, focused }) =>
+              focused ? (
+                <MaterialCommunityIcons
+                  name="bitcoin"
+                  size={28}
+                  color={color}
+                />
+              ) : (
+                <Foundation name="bitcoin" size={28} color={color} />
+              ),
+          }}
+        />
+        <Tabs.Screen
+          name="setting"
+          options={{
+            title: "Setting",
+            tabBarIcon: ({ color, focused }) =>
+              focused ? (
+                <Ionicons name="settings" size={26} color={color} />
+              ) : (
+                <Ionicons name="settings-outline" size={26} color={color} />
+              ),
+          }}
+        />
+
+        <Tabs.Screen
+          name="wallet"
+          options={{
+            title: "Wallet",
+            tabBarIcon: ({ color, focused }) =>
+              focused ? (
+                <Ionicons
+                  name="wallet"
+                  color={color}
+                  size={26}
+                />
+              ) : (
+                <Ionicons
+                  name="wallet-outline"
+                  color={color}
+                  size={26}
+                />
+              ),
+          }}
+        />
+      </Tabs>
+    </View>
   );
 }
