@@ -8,14 +8,15 @@ export default function useLoadFonts() {
   useEffect(() => {
     (async () => {
       await Font.loadAsync({
-        "Sombra-Thin": require("@/assets/fonts/Sombra-Thin.ttf"),
-        "Sombra-Light": require("@/assets/fonts/Sombra-Light.ttf"),
-        "Sombra-Regular": require("@/assets/fonts/Sombra-Regular.ttf"),
-        "Sombra-Medium": require("@/assets/fonts/Sombra-Medium.ttf"),
-        "Sombra-Bold": require("@/assets/fonts/Sombra-Bold.ttf"),
-        "Sombra-Poster": require("@/assets/fonts/Sombra-Poster.ttf"),
+        "Saira-Condensed-Thin": require("@/assets/fonts/SairaCondensed-Thin.ttf"),
+        "Saira-Condensed-Light": require("@/assets/fonts/SairaCondensed-Light.ttf"),
+        "Saira-Condensed-Regular": require("@/assets/fonts/SairaCondensed-Regular.ttf"),
+        "Saira-Condensed-Medium": require("@/assets/fonts/SairaCondensed-Medium.ttf"),
+        "Saira-Condensed-Bold": require("@/assets/fonts/SairaCondensed-Bold.ttf"),
+        "Saira-Condensed-ExtraBold": require("@/assets/fonts/SairaCondensed-ExtraBold.ttf"),
+        "Saira-Condensed-Black": require("@/assets/fonts/SairaCondensed-Black.ttf"),
 
-        "Safiro-Medium": require("@/assets/fonts/Safiro-Medium.ttf"),
+        "Safiro-Medium": require("@/assets/fonts/Safiro-Medium.otf"),
       });
 
       setLoaded(true);

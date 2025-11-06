@@ -7,6 +7,7 @@ import {
   FlatList,
 } from "react-native";
 import { Ionicons, FontAwesome5, MaterialCommunityIcons } from "@expo/vector-icons";
+import { CustomText } from "@/components/CustomText";
 
 interface Transaction {
   id: string;
@@ -64,9 +65,9 @@ export default function Wallet() {
     <View style={styles.container}>
       {/* Header */}
       <View style={styles.balanceCard}>
-        <Text style={styles.currency}>USD</Text>
-        <Text style={styles.balance}>194,284</Text>
-        <Text style={styles.subText}>$2,678 • +1.6%</Text>
+        <CustomText weight="Medium" style={styles.currency}>USD</CustomText>
+        <CustomText weight="Black" style={styles.balance}>194,284</CustomText>
+        <CustomText weight="SemiBold" style={styles.subText}>$2,678 • +1.6%</CustomText>
       </View>
 
       {/* Action buttons */}
@@ -130,25 +131,23 @@ const styles = StyleSheet.create({
   },
   balanceCard: {
     backgroundColor: "#e0ff40",
-    borderRadius: 24,
+    borderRadius: 28,
     padding: 30,
     alignItems: "center",
     marginTop: 20,
   },
   currency: {
     color: "#333",
-    fontSize: 16,
-    fontWeight: "500",
+    fontSize: 20,
   },
   balance: {
     color: "#111",
-    fontSize: 44,
-    fontWeight: "700",
+    fontSize: 48,
     marginVertical: 4,
   },
   subText: {
     color: "#333",
-    fontSize: 16,
+    fontSize: 18,
   },
   actions: {
     flexDirection: "row",

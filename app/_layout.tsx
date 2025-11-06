@@ -2,10 +2,11 @@ import { DarkTheme, DefaultTheme, ThemeProvider } from "@react-navigation/native
 import { Stack, useSegments } from "expo-router";
 import { StatusBar } from "expo-status-bar";
 import "react-native-reanimated";
-import { View, StyleSheet } from "react-native";
+import { View, StyleSheet, ActivityIndicator } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import TopNavbar from "@/components/ui/TopNavbar";
 import { useColorScheme } from "@/hooks/use-color-scheme";
+import useLoadFonts from "@/hooks/useLoadFonts";
 
 
 export const unstable_settings = {
@@ -16,9 +17,18 @@ export default function RootLayout() {
   const colorScheme = useColorScheme();
   const segments = useSegments() as string[];
 
+    const fontsLoaded = useLoadFonts();
+
+  if (!fontsLoaded) {
+    return (
+      <View style={{ flex: 1, justifyContent: "center", alignItems: "center", backgroundColor: "#0d0d0d" }}>
+        <ActivityIndicator size="large" color="#fff" />
+      </View>
+    );
+  }
+    
+
   const hideNavbar = segments.includes("profile"); 
-
-
 
   return (
     <ThemeProvider value={colorScheme === "dark" ? DarkTheme : DefaultTheme}>

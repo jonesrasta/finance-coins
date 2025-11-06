@@ -1,8 +1,8 @@
 import React from "react";
 import { Text as RNText, TextProps } from "react-native";
 
-type FontWeight = "Thin" | "Light" | "Regular" | "Medium" | "Bold" | "Poster";
-type FontVariant = "Sombra" | "Safiro";
+type FontWeight = "Thin" | "Light" | "Regular" | "Medium" | "SemiBold" | "Bold" | "ExtraBold" | "Black";
+type FontVariant = "SairaCondensed" | "Safiro";
 
 interface CustomTextProps extends TextProps {
   weight?: FontWeight;
@@ -12,7 +12,7 @@ interface CustomTextProps extends TextProps {
 export function CustomText({
   style,
   weight = "Regular",
-  variant = "Sombra",
+  variant = "SairaCondensed",
   ...props
 }: CustomTextProps) {
   let fontFamily = "";
@@ -20,7 +20,7 @@ export function CustomText({
   if (variant === "Safiro") {
     fontFamily = "Safiro-Medium";
   } else {
-    fontFamily = `Sombra-${weight}`;
+    fontFamily = `Saira-Condensed-${weight}`;
   }
 
   return (
