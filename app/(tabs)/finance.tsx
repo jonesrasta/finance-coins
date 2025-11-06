@@ -117,7 +117,7 @@ function CarouselCard({ item }: { item: Ticker }) {
 }
 
 function GainerRow({ item }: { item: Ticker }) {
-  const color = item.priceChangePercent >= 0 ? "#2FE08D" : "#FF6B6B";
+  const color = item.priceChangePercent >= 0 ? "#47f0a1ff" : "#FF6B6B";
   return (
     <View style={styles.row}>
       <Text style={styles.name}>{item.symbol.replace("USDT", "")}</Text>

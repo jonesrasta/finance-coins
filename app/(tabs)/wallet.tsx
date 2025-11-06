@@ -130,7 +130,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 20,
   },
   balanceCard: {
-    backgroundColor: "#e0ff40",
+    backgroundColor: "#C3FF5A",
     borderRadius: 28,
     padding: 30,
     alignItems: "center",
@@ -141,7 +141,7 @@ const styles = StyleSheet.create({
     fontSize: 20,
   },
   balance: {
-    color: "#111",
+    color: "#1f1d1dff",
     fontSize: 48,
     marginVertical: 4,
   },
