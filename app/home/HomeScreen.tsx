@@ -1,10 +1,12 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { View, StyleSheet, Animated, ActivityIndicator } from "react-native";
-import { useRouter } from "expo-router";
+import { useRouter, usePathname } from "expo-router";
 import { useFonts } from "expo-font";
 
 export default function HomeScreen() {
   const router = useRouter();
+  const pathname = usePathname();
+  const [redirected, setRedirected] = useState(false);
 
   const [fontsLoaded] = useFonts({
     "Safiro-Medium": require("../../assets/fonts/Safiro-Medium.otf"),
@@ -30,9 +32,17 @@ export default function HomeScreen() {
       }),
     ]).start();
 
+    // redireciona após animação
+    const timer = setTimeout(() => {
+      if (!redirected && pathname !== "/steps") {
+        setRedirected(true);
+        router.replace("/steps" as any);
+      }
+    }, 3500);
 
-    
-  }, [fadeAnim, scaleAnim, router, fontsLoaded]);
+    return () => clearTimeout(timer);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [fontsLoaded, fadeAnim, scaleAnim, redirected, pathname]);
 
   if (!fontsLoaded) {
     return (
@@ -45,7 +55,7 @@ export default function HomeScreen() {
   return (
     <View style={styles.container}>
       <Animated.Image
-        source={require("../../assets/images/soundchaincolor.png")}
+        source={require("../../assets/images/financecoins.webp")}
         style={[
           styles.logo,
           { opacity: fadeAnim, transform: [{ scale: scaleAnim }] },
@@ -57,7 +67,7 @@ export default function HomeScreen() {
           { opacity: fadeAnim, fontFamily: "Safiro-Medium" },
         ]}
       >
-        Sound Chain
+        Finance Coins
       </Animated.Text>
     </View>
   );
@@ -66,7 +76,7 @@ export default function HomeScreen() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#0d0d0d",
+    backgroundColor: "#131313ff",
     justifyContent: "center",
     alignItems: "center",
   },
@@ -82,7 +92,7 @@ const styles = StyleSheet.create({
     marginBottom: 10,
   },
   title: {
-    fontSize: 24,
+    fontSize: 28,
     color: "#fff",
   },
 });

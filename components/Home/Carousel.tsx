@@ -180,7 +180,7 @@ const styles = StyleSheet.create({
     width: CARD_WIDTH,
     height: 320,
     backgroundColor: "#121712",
-    borderRadius: 20,
+    borderRadius: 26,
     padding: 20,
     marginRight: 16,
     shadowColor: "#000",

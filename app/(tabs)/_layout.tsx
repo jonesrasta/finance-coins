@@ -110,10 +110,8 @@ export default function TabsLayout() {
           tabBarInactiveTintColor: "#aaa",
           tabBarLabelStyle: {
             fontSize: 12,
-            marginBottom: 18,
-            marginTop: 3,
-            fontFamily: "Sombra",
-            fontWeight: "semibold",
+            marginBottom: 24,
+            marginTop: 1,
           },
         }}
       >
@@ -138,13 +136,13 @@ export default function TabsLayout() {
               focused ? (
                 <MaterialCommunityIcons
                   name="finance"
-                  size={26}
+                  size={24}
                   color={color}
                 />
               ) : (
                 <MaterialCommunityIcons
                   name="finance"
-                  size={26}
+                  size={24}
                   color={color}
                 />
               ),
@@ -158,26 +156,26 @@ export default function TabsLayout() {
               focused ? (
                 <MaterialCommunityIcons
                   name="bitcoin"
-                  size={28}
+                  size={26}
                   color={color}
                 />
               ) : (
-                <Foundation name="bitcoin" size={28} color={color} />
+                <Foundation name="bitcoin" size={26} color={color} />
               ),
           }}
         />
-        <Tabs.Screen
+        {/* <Tabs.Screen
           name="setting"
           options={{
             title: "Setting",
             tabBarIcon: ({ color, focused }) =>
               focused ? (
-                <Ionicons name="settings" size={26} color={color} />
+                <Ionicons name="settings" size={24} color={color} />
               ) : (
-                <Ionicons name="settings-outline" size={26} color={color} />
+                <Ionicons name="settings-outline" size={24} color={color} />
               ),
           }}
-        />
+        /> */}
 
         <Tabs.Screen
           name="wallet"
@@ -188,13 +186,13 @@ export default function TabsLayout() {
                 <Ionicons
                   name="wallet"
                   color={color}
-                  size={26}
+                  size={24}
                 />
               ) : (
                 <Ionicons
                   name="wallet-outline"
                   color={color}
-                  size={26}
+                  size={24}
                 />
               ),
           }}
