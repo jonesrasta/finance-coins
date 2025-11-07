@@ -111,8 +111,8 @@ export default function StepsScreen() {
 const styles = StyleSheet.create({
   background: {
     flex: 1,
-    width: "100%",
-    height: "50%",
+    width: 420,
+    height: "100%",
     justifyContent: "center",
     alignItems: "center",
   },
@@ -125,12 +125,12 @@ const styles = StyleSheet.create({
     paddingHorizontal: 20,
   },
   title: {
-    fontSize: 58,
-    lineHeight: 60,
+    fontSize: 60,
+    lineHeight: 64,
     color: "#fff",
     textAlign: "left",
     marginBottom: 10,
-    top: 100,
+    top: 70,
     padding: 4,
   },
   subtitle: {
@@ -139,7 +139,7 @@ const styles = StyleSheet.create({
     color: "#ddd",
     textAlign: "left",
     marginBottom: 40,
-    top: 90,
+    top: 60,
   },
   button: {
     width: "100%",
@@ -147,7 +147,7 @@ const styles = StyleSheet.create({
     paddingVertical: 10,
     borderRadius: 30,
     marginVertical: 8,
-    top: 70,
+    top: 40,
   },
   buttonText: {
     color: "#2e2828ff",
@@ -157,7 +157,7 @@ const styles = StyleSheet.create({
   step: {
     fontSize: 40,
     color: "#fff",
-    top: 50,
+    top: 70,
   },
 
   buttonStep: {
@@ -167,7 +167,7 @@ const styles = StyleSheet.create({
     paddingVertical: 12,
     width: "100%",
     borderRadius: 30,
-    top: 60,
+    top: 80,
     marginVertical: 8,
   },
   icon: {
@@ -187,5 +187,6 @@ const styles = StyleSheet.create({
     fontSize: 22,
     color: "#adadadff",
     textAlign: "center",
+    
   },
 });

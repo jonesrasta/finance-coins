@@ -191,7 +191,7 @@ const Carousel = ({ selectedPeriod }: Props) => {
 const styles = StyleSheet.create({
   scrollContainer: {
     paddingLeft: 14,
-    paddingRight: 10,
+    paddingRight: 20,
   },
   loadingContainer: {
     padding: 120,

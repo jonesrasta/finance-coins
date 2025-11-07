@@ -131,7 +131,7 @@ function GainerRow({ item }: { item: Ticker }) {
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: "#0B0F0A",
+    // backgroundColor: "#0B0F0A",
     borderRadius: 20,
     paddingHorizontal: 16,
     paddingVertical: 20,
