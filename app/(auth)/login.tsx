@@ -12,99 +12,119 @@ import { LinearGradient } from "expo-linear-gradient";
 import { Ionicons } from "@expo/vector-icons";
 import { CustomText } from "@/components/CustomText";
 import { useRouter } from "expo-router";
+import BackButton from "@/components/ui/BackButton";
 
 export default function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-   const router = useRouter();
+  const router = useRouter();
 
   const handleSignIn = () => {
     // Aqui você pode colocar lógica de autenticação antes, se quiser
     router.push("/home"); // navega para a rota 'home'
   };
 
-
   return (
     <LinearGradient
       colors={["#C3FF5A", "#222222", "#242424"]}
       style={styles.container}
     >
+      <View style={{ flex: 1 }}>
+        <BackButton />
+        {/* resto da tela */}
+      </View>
       <SafeAreaView>
         <View>
-        {/* Logo */}
-        <Image
-          source={require("../../assets/images/financecoins.webp")} // substitua pelo seu logo
-          style={styles.logo}
-          resizeMode="contain"
-        />
+          {/* Logo */}
+          <Image
+            source={require("../../assets/images/financecoins.webp")} // substitua pelo seu logo
+            style={styles.logo}
+            resizeMode="contain"
+          />
 
-        {/* Título */}
-        <CustomText weight="Medium" style={styles.title}>Sign in to Your Account</CustomText>
+          {/* Título */}
+          <CustomText weight="Medium" style={styles.title}>
+            Sign in to Your Account
+          </CustomText>
 
-        {/* Input Email */}
-        <Text style={styles.label}>Email Address</Text>
-        <TextInput
-          placeholder="Enter your email"
-          placeholderTextColor="#aaa"
-          style={styles.input}
-          value={email}
-          onChangeText={setEmail}
-        />
-
-        {/* Input Senha */}
-        <Text style={styles.label}>Password</Text>
-        <TextInput
-          placeholder="Enter your password"
-          placeholderTextColor="#aaa"
-          style={styles.input}
-          value={password}
-          secureTextEntry
-          onChangeText={setPassword}
-        />
-
-        {/* Remember + Forgot */}
-        <View style={styles.options}>
-          <View style={styles.rememberContainer}>
-            <TouchableOpacity style={styles.checkbox} />
-            <Text style={styles.rememberText}>Remember</Text>
-          </View>
-          <TouchableOpacity>
-            <Text style={styles.forgotText}>Forgot Password ?</Text>
-          </TouchableOpacity>
-        </View>
-
-        {/* Botão Sign In */}
-    <TouchableOpacity style={styles.signInButton} onPress={handleSignIn}>
-      <CustomText weight="Bold" style={styles.signInText}>
-        Sign In
-      </CustomText>
-    </TouchableOpacity>
-
-        {/* Divider */}
-        <View style={styles.dividerContainer}>
-          <View style={styles.dividerLine} />
-          <Text style={styles.orText}>OR</Text>
-          <View style={styles.dividerLine} />
-        </View>
-
-        {/* Botões sociais */}
-        <View style={styles.socialContainer}>
-          <TouchableOpacity style={styles.socialButton}>
-            <Ionicons name="logo-apple" size={50} color="#828282" />
-          </TouchableOpacity>
-          <TouchableOpacity style={styles.socialButton}>
-            <Image
-              source={require("../../assets/images/icon/google.png")}
-              style={{ width: 40, height: 40, margin: 5 }}
-              resizeMode="contain"
+          {/* Input Email */}
+          <CustomText weight="Medium" style={styles.label}>
+            Email Address
+          </CustomText>
+          <CustomText weight="Regular">
+            <TextInput
+              placeholder="Enter your email"
+              placeholderTextColor="#7c7c7c9f"
+              style={styles.input}
+              value={email}
+              onChangeText={setEmail}
             />
-          </TouchableOpacity>
-        </View>
+          </CustomText>
 
-        {/* Sign up */}
-        <CustomText weight="Medium" style={styles.footerText}>
-          Don’t have an account? <Text style={styles.signUpText}>Sign up</Text>
-        </CustomText>
+          {/* Input Senha */}
+          <CustomText weight="Medium" style={styles.label}>
+            Password
+          </CustomText>
+          <CustomText weight="Regular">
+            <TextInput
+              placeholder="Enter your password"
+              placeholderTextColor="#7c7c7c9f"
+              style={styles.input}
+              value={password}
+              secureTextEntry
+              onChangeText={setPassword}
+            />
+          </CustomText>
+          {/* Remember + Forgot */}
+          <View style={styles.options}>
+            <View style={styles.rememberContainer}>
+              <TouchableOpacity style={styles.checkbox} />
+              <CustomText weight="Regular" style={styles.rememberText}>
+                Remember
+              </CustomText>
+            </View>
+            <TouchableOpacity>
+              <CustomText weight="Regular" style={styles.forgotText}>
+                Forgot Password ?
+              </CustomText>
+            </TouchableOpacity>
+          </View>
+
+          {/* Botão Sign In */}
+          <TouchableOpacity style={styles.signInButton} onPress={handleSignIn}>
+            <CustomText weight="Bold" style={styles.signInText}>
+              Sign In
+            </CustomText>
+          </TouchableOpacity>
+
+          {/* Divider */}
+          <View style={styles.dividerContainer}>
+            <View style={styles.dividerLine} />
+            <CustomText weight="Medium" style={styles.orText}>
+              OR
+            </CustomText>
+            <View style={styles.dividerLine} />
+          </View>
+
+          {/* Botões sociais */}
+          <View style={styles.socialContainer}>
+            <TouchableOpacity style={styles.socialButton}>
+              <Ionicons name="logo-apple" size={44} color="#828282" />
+            </TouchableOpacity>
+            <TouchableOpacity style={styles.socialButton}>
+              <Image
+                source={require("../../assets/images/icon/google.png")}
+                style={{ width: 34, height: 34, margin: 5 }}
+                resizeMode="contain"
+              />
+            </TouchableOpacity>
+          </View>
+
+          {/* Sign up */}
+          <CustomText weight="Medium" style={styles.footerText}>
+            Don’t have an account?{" "}
+            <Text style={styles.signUpText}>Sign up</Text>
+          </CustomText>
         </View>
       </SafeAreaView>
     </LinearGradient>
@@ -115,7 +135,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     padding: 24,
-    paddingTop: 90,
+    paddingTop: 40,
   },
   logo: {
     width: 80,
@@ -133,7 +153,7 @@ const styles = StyleSheet.create({
   label: {
     alignSelf: "flex-start",
     color: "#ccc",
-    fontSize: 16,
+    fontSize: 20,
     marginBottom: 6,
     marginLeft: 16,
   },
@@ -145,6 +165,10 @@ const styles = StyleSheet.create({
     paddingVertical: 20,
     marginBottom: 15,
     color: "#fff",
+    borderColor: "#585858ff",
+    borderWidth: 0.7,
+    fontFamily: "SairaCondensed-Regular",
+    fontSize: 18,
   },
   options: {
     width: "100%",
@@ -168,11 +192,11 @@ const styles = StyleSheet.create({
   },
   rememberText: {
     color: "#ccc",
-    fontSize: 14,
+    fontSize: 16,
   },
   forgotText: {
     color: "#ccc",
-    fontSize: 14,
+    fontSize: 16,
     marginRight: 16,
   },
   signInButton: {
@@ -203,20 +227,21 @@ const styles = StyleSheet.create({
   },
   orText: {
     color: "#ccc",
-    marginHorizontal: 10,
+    marginHorizontal: 14,
+    fontSize: 18,
   },
   socialContainer: {
     flexDirection: "row",
     justifyContent: "center",
-    gap: 20,
-    marginBottom: 30,
+    gap: 16,
+    marginBottom: 24,
   },
   socialButton: {
     backgroundColor: "#333",
-    padding: 9,
+    padding: 8,
     borderRadius: 16,
     borderColor: "#585858ff",
-    borderWidth: 0.8,
+    borderWidth: 0.7,
   },
   footerText: {
     color: "#ccc",
