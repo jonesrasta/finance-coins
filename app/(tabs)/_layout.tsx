@@ -1,5 +1,4 @@
 import React, { useRef } from "react";
-// import MaterialIcons from "@expo/vector-icons/MaterialIcons";
 import { BlurView } from "expo-blur";
 import { Tabs } from "expo-router";
 import { StyleSheet, Platform, Animated, Pressable, View } from "react-native";
@@ -127,7 +126,6 @@ export default function TabsLayout() {
               ),
           }}
         />
-
         <Tabs.Screen
           name="finance"
           options={{
@@ -164,19 +162,6 @@ export default function TabsLayout() {
               ),
           }}
         />
-        {/* <Tabs.Screen
-          name="setting"
-          options={{
-            title: "Setting",
-            tabBarIcon: ({ color, focused }) =>
-              focused ? (
-                <Ionicons name="settings" size={24} color={color} />
-              ) : (
-                <Ionicons name="settings-outline" size={24} color={color} />
-              ),
-          }}
-        /> */}
-
         <Tabs.Screen
           name="wallet"
           options={{

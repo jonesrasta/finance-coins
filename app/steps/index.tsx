@@ -101,6 +101,23 @@ export default function StepsScreen() {
                 Connect with MetaMask
               </CustomText>
             </TouchableOpacity>
+
+            {/* BOTÃO LOGIN */}
+            <TouchableOpacity
+              style={[
+                styles.buttonStep,
+                {
+                  backgroundColor: "#1E1E1E",
+                  borderWidth: 0.3,
+                  borderColor: "#585858ff",
+                },
+              ]}
+              onPress={() => router.push("/login" as any)}
+            >
+              <CustomText weight="Bold" style={styles.TextStep}>
+                Login
+              </CustomText>
+            </TouchableOpacity>
           </>
         )}
       </View>
@@ -187,6 +204,5 @@ const styles = StyleSheet.create({
     fontSize: 22,
     color: "#adadadff",
     textAlign: "center",
-    
   },
 });
