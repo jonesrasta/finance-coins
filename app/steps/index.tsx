@@ -22,8 +22,8 @@ export default function StepsScreen() {
   // alterna imagem de fundo conforme o step
   const backgroundImage =
     step === 1
-      ? require("../../assets/images/backgroundstep.png")
-      : require("../../assets/images/backgroundstep1.png");
+      ? require("../../assets/images/backgroundstep.webp")
+      : require("../../assets/images/backgroundstep1.webp");
 
   return (
     <ImageBackground
@@ -42,14 +42,14 @@ export default function StepsScreen() {
             </CustomText>
 
             <TouchableOpacity style={styles.button} onPress={handleNext}>
-              <CustomText weight="ExtraBold" style={styles.buttonText}>
+              <CustomText weight="Bold" style={styles.buttonText}>
                 Get Started
               </CustomText>
             </TouchableOpacity>
           </>
         ) : (
           <>
-            <CustomText weight="Medium" style={styles.step}>
+            <CustomText weight="Bold" style={styles.step}>
               Login or Sign up
             </CustomText>
             <TouchableOpacity
@@ -71,7 +71,7 @@ export default function StepsScreen() {
               onPress={() => router.replace("/(tabs)/home")}
             >
               <Image
-                source={require("../../assets/icon/google.png")}
+                source={require("../../assets/images/icon/google.png")}
                 style={styles.iconImage}
                 resizeMode="contain"
               />
@@ -93,7 +93,7 @@ export default function StepsScreen() {
               onPress={() => router.replace("/(tabs)/home")}
             >
               <Image
-                source={require("../../assets/icon/metamask.png")}
+                source={require("../../assets/images/icon/metamask.png")}
                 style={styles.iconImage}
                 resizeMode="contain"
               />
@@ -112,14 +112,14 @@ const styles = StyleSheet.create({
   background: {
     flex: 1,
     width: "100%",
-    height: "52%",
+    height: "50%",
     justifyContent: "center",
     alignItems: "center",
   },
   overlay: {
     flex: 1,
     width: "100%",
-    backgroundColor: "rgba(0,0,0,0.6)",
+    backgroundColor: "rgba(0, 0, 0, 0.48)",
     justifyContent: "center",
     alignItems: "center",
     paddingHorizontal: 20,
@@ -130,7 +130,7 @@ const styles = StyleSheet.create({
     color: "#fff",
     textAlign: "left",
     marginBottom: 10,
-    top: 80,
+    top: 100,
     padding: 4,
   },
   subtitle: {
@@ -139,7 +139,7 @@ const styles = StyleSheet.create({
     color: "#ddd",
     textAlign: "left",
     marginBottom: 40,
-    top: 80,
+    top: 90,
   },
   button: {
     width: "100%",
@@ -147,11 +147,11 @@ const styles = StyleSheet.create({
     paddingVertical: 10,
     borderRadius: 30,
     marginVertical: 8,
-    top: 60,
+    top: 70,
   },
   buttonText: {
     color: "#2e2828ff",
-    fontSize: 26,
+    fontSize: 24,
     textAlign: "center",
   },
   step: {
@@ -164,19 +164,19 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "center",
-    paddingVertical: 10,
+    paddingVertical: 12,
     width: "100%",
     borderRadius: 30,
     top: 60,
     marginVertical: 8,
   },
   icon: {
-    marginRight: 10,
+    marginRight: 14,
   },
   iconImage: {
     width: 24,
     height: 24,
-    marginRight: 10,
+    marginRight: 14,
   },
   buttonTextStep: {
     fontSize: 22,

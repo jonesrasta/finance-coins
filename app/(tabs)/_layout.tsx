@@ -61,7 +61,7 @@ export default function TabsLayout() {
           tabBarBackground: () =>
             Platform.OS === "ios" ? (
               <BlurView
-                intensity={60}
+                intensity={40}
                 tint="default"
                 style={[
                   StyleSheet.absoluteFill,
@@ -92,13 +92,13 @@ export default function TabsLayout() {
             borderCurve: "continuous",
             backgroundColor:
               Platform.OS === "ios"
-                ? "rgba(255, 255, 255, 0.11)"
+                ? "rgba(65, 65, 65, 0.11)"
                 : "rgba(29, 29, 29, 0.86)",
             borderWidth: 0.5,
             borderColor:
               Platform.OS === "ios"
-                ? "rgba(255, 255, 255, 0.09)"
-                : "rgba(255, 255, 255, 0.03)",
+                ? "rgba(255, 255, 255, 0.07)"
+                : "rgba(255, 255, 255, 0.14)",
             shadowColor: "#000",
             shadowOffset: { width: 0, height: 6 },
             shadowOpacity: 0.2,
@@ -109,7 +109,7 @@ export default function TabsLayout() {
           tabBarActiveTintColor: "#fff",
           tabBarInactiveTintColor: "#aaa",
           tabBarLabelStyle: {
-            fontSize: 12,
+            fontSize: 11,
             marginBottom: 24,
             marginTop: 1,
           },
