@@ -2,8 +2,11 @@
 import { Ionicons } from "@expo/vector-icons";
 import { View, Image, TouchableOpacity, StyleSheet } from "react-native";
 import React from "react";
+import { useRouter } from "expo-router";
 
 export default function TopNavbar() {
+   const router = useRouter();
+
   return (
     <View style={styles.container}>
       {/* Ícones à esquerda */}
@@ -18,7 +21,10 @@ export default function TopNavbar() {
       </View>
 
       {/* Avatar à direita */}
-      <TouchableOpacity style={styles.avatarContainer}>
+      <TouchableOpacity
+        style={styles.avatarContainer}
+        onPress={() => router.push("/profile")} // 👉 Navega para o componente Profile
+      >
         <Image
           source={require("../../assets/images/avatarj.webp")}
           style={styles.avatar}

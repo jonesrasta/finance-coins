@@ -1,29 +1,47 @@
+// ui/BackButton.tsx
 import React from "react";
-import { TouchableOpacity, StyleSheet } from "react-native";
+import { TouchableOpacity, StyleSheet, ViewStyle } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 import { useRouter } from "expo-router";
+import { BlurView } from "expo-blur"; // 👈 importa o BlurView
 
-export default function BackButton() {
+interface BackButtonProps {
+  style?: ViewStyle;
+}
+
+export default function BackButton({ style }: BackButtonProps) {
   const router = useRouter();
 
   return (
-    <TouchableOpacity style={styles.button} onPress={() => router.back()}>
-      <Ionicons name="chevron-back" size={34} color="#fff" />
+    <TouchableOpacity
+      style={[styles.buttonContainer, style]}
+      onPress={() => router.back()}
+      activeOpacity={0.8}
+    >
+      {/* 👇 camada de blur */}
+      <BlurView intensity={60} tint="dark" style={styles.blurView} />
+
+      {/* Ícone acima do blur */}
+      <Ionicons name="chevron-back" size={20} color="#f0f0f0b0" />
     </TouchableOpacity>
   );
 }
 
 const styles = StyleSheet.create({
-  button: {
-    width: 52,
-    height: 52,
-    borderRadius: 14,
-    borderColor: "#c5c3c3ff",
-    borderWidth: 0.4,
-    backgroundColor: "rgba(105, 105, 105, 0.48)", // fundo leve translúcido
+  buttonContainer: {
+    width: 46,
+    height: 46,
+    borderRadius: 12,
+    overflow: "hidden", 
     justifyContent: "center",
     alignItems: "center",
+    position: "absolute",
     bottom: 20,
     right: 2,
+    borderColor: "#99999983",
+    borderWidth: 0.5,
+  },
+  blurView: {
+    ...StyleSheet.absoluteFillObject, // ocupa todo o botão
   },
 });

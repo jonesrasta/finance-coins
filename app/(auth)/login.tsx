@@ -30,8 +30,14 @@ export default function Login() {
       style={styles.container}
     >
       <View style={{ flex: 1 }}>
-        <BackButton />
-        {/* resto da tela */}
+          <BackButton
+            style={{
+              position: "absolute",
+              top: -28,
+              left: -10,
+              backgroundColor: "rgba(48, 48, 48, 0.2)",
+            }}
+          />
       </View>
       <SafeAreaView>
         <View>
