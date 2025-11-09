@@ -10,6 +10,7 @@ import {
 } from "react-native";
 import Svg, { Path, Line } from "react-native-svg";
 import type { Period } from "./Hero";
+import { CustomText } from "../CustomText";
 
 const { width } = Dimensions.get("window");
 const CARD_WIDTH = width * 0.8;
@@ -145,14 +146,14 @@ const Carousel = ({ selectedPeriod }: Props) => {
             <View style={styles.header}>
               <Image source={cryptoIcons[coin.symbol]} style={styles.icon} />
               <View>
-                <Text style={styles.coinSymbol}>{coin.symbol}</Text>
-                <Text style={styles.rate}>{coin.name}</Text>
+                <CustomText weight="Bold" style={styles.coinSymbol}>{coin.symbol}</CustomText>
+                <CustomText  weight="Medium" style={styles.rate}>{coin.name}</CustomText>
               </View>
             </View>
 
-            <Text style={styles.price}>
+            <CustomText  weight="Black" style={styles.price}>
               ${data[data.length - 1].toLocaleString()}
-            </Text>
+            </CustomText>
             <Text
               style={[
                 styles.change,
@@ -215,31 +216,33 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     alignItems: "center",
     gap: 10,
-    marginBottom: 20,
+    marginBottom: 2,
   },
   icon: {
-    width: 34,
-    height: 34,
+    width: 38,
+    height: 38,
     borderRadius: 17,
   },
   coinSymbol: {
     color: "#FFFFFF",
     fontSize: 16,
-    fontWeight: "bold",
+    letterSpacing: 0.8,
+    
   },
   rate: {
     color: "#888",
-    fontSize: 12,
+    fontSize: 14,
+    letterSpacing: 0.8,
+    
   },
   price: {
     color: "#FFFFFF",
-    fontSize: 28,
-    fontWeight: "700",
-    marginTop: 6,
+    fontSize: 36,
+    marginTop: 2,
+    letterSpacing: 0.8,
   },
   change: {
     fontSize: 14,
-    fontWeight: "600",
     marginBottom: 8,
   },
 });

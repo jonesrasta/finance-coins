@@ -3,7 +3,7 @@ import React from "react";
 import { TouchableOpacity, StyleSheet, ViewStyle } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 import { useRouter } from "expo-router";
-import { BlurView } from "expo-blur"; // 👈 importa o BlurView
+import { BlurView } from "expo-blur"; 
 
 interface BackButtonProps {
   style?: ViewStyle;
@@ -18,7 +18,7 @@ export default function BackButton({ style }: BackButtonProps) {
       onPress={() => router.back()}
       activeOpacity={0.8}
     >
-      {/* 👇 camada de blur */}
+      
       <BlurView intensity={60} tint="dark" style={styles.blurView} />
 
       {/* Ícone acima do blur */}
@@ -42,6 +42,6 @@ const styles = StyleSheet.create({
     borderWidth: 0.5,
   },
   blurView: {
-    ...StyleSheet.absoluteFillObject, // ocupa todo o botão
+    ...StyleSheet.absoluteFillObject, 
   },
 });
