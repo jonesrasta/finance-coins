@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import {
   View,
-  Text,
   StyleSheet,
   ScrollView,
   Dimensions,
@@ -154,7 +153,7 @@ const Carousel = ({ selectedPeriod }: Props) => {
             <CustomText  weight="Black" style={styles.price}>
               ${data[data.length - 1].toLocaleString()}
             </CustomText>
-            <Text
+            <CustomText
               style={[
                 styles.change,
                 { color: change >= 0 ? coin.color : "#FF6B6B" },
@@ -162,7 +161,7 @@ const Carousel = ({ selectedPeriod }: Props) => {
             >
               {change >= 0 ? "+" : ""}
               {change.toFixed(2)}%
-            </Text>
+            </CustomText>
 
             <Svg height={GRAPH_HEIGHT} width={CARD_WIDTH}>
               <Path
@@ -233,6 +232,7 @@ const styles = StyleSheet.create({
     color: "#888",
     fontSize: 14,
     letterSpacing: 0.8,
+    top: -2,
     
   },
   price: {
@@ -242,8 +242,9 @@ const styles = StyleSheet.create({
     letterSpacing: 0.8,
   },
   change: {
-    fontSize: 14,
+    fontSize: 16,
     marginBottom: 8,
+    letterSpacing: 0.8,
   },
 });
 

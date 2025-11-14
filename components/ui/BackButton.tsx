@@ -29,8 +29,8 @@ export default function BackButton({ style }: BackButtonProps) {
 
 const styles = StyleSheet.create({
   buttonContainer: {
-    width: 46,
-    height: 46,
+    width: 40,
+    height: 40,
     borderRadius: 12,
     overflow: "hidden", 
     justifyContent: "center",
