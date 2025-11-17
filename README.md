@@ -3,8 +3,7 @@
 Aplicativo mobile para monitoramento de criptomoedas, cotação em tempo real, gráficos dinâmicos e acompanhamento financeiro. Construído com foco em velocidade, experiência fluida e interface moderna.
 
 <p align="center">
-  <img src="./assets/screens/dashboard.png" width="280" />
-  <img src="./assets/screens/coin-details.png" width="280" />
+  <img src="./assets/finance_coin.webp" width="1280" />
 </p>
 
 🏷️ Badges
