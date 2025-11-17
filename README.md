@@ -6,7 +6,7 @@ Aplicativo mobile para monitoramento de criptomoedas, cotação em tempo real, g
   <img src="./assets/doc/finance_coin.webp" width="1280" />
 </p>
 
-🏷️ Badges
+
 <p align="left"> <img src="https://img.shields.io/badge/Expo-000000?style=for-the-badge&logo=expo" /> <img src="https://img.shields.io/badge/React_Native-20232A?style=for-the-badge&logo=react&logoColor=61DAFB" /> <img src="https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white" /> <img src="https://img.shields.io/badge/Android-3DDC84?style=for-the-badge&logo=android&logoColor=white" /> <img src="https://img.shields.io/badge/iOS-000000?style=for-the-badge&logo=apple&logoColor=white" /> </p>
 
 📱 Funcionalidades
