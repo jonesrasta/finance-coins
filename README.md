@@ -47,12 +47,12 @@ API de criptomoedas (Binance)
 ⚙️ Como rodar o projeto
 1. Instale as dependências
 <p align="left">
-  <img src="./assets/doc/npm_i.png" width="820" />
+  <img src="./assets/doc/npm_i.png" width="920" />
 </p>
 
 2. Inicie o app
 <p align="left">
-  <img src="./assets/doc/npm_start.png" width="520" />
+  <img src="./assets/doc/npm_start.png" width="920" />
 </p>
 
 
