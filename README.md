@@ -2,6 +2,11 @@
 
 Aplicativo mobile para monitoramento de criptomoedas, cotação em tempo real, gráficos dinâmicos e acompanhamento financeiro. Construído com foco em velocidade, experiência fluida e interface moderna.
 
+<p align="center">
+  <img src="./assets/screens/dashboard.png" width="280" />
+  <img src="./assets/screens/coin-details.png" width="280" />
+</p>
+
 🏷️ Badges
 <p align="left"> <img src="https://img.shields.io/badge/Expo-000000?style=for-the-badge&logo=expo" /> <img src="https://img.shields.io/badge/React_Native-20232A?style=for-the-badge&logo=react&logoColor=61DAFB" /> <img src="https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white" /> <img src="https://img.shields.io/badge/Android-3DDC84?style=for-the-badge&logo=android&logoColor=white" /> <img src="https://img.shields.io/badge/iOS-000000?style=for-the-badge&logo=apple&logoColor=white" /> </p>
 📱 Funcionalidades
@@ -12,11 +17,7 @@ Aplicativo mobile para monitoramento de criptomoedas, cotação em tempo real, g
 
 🔄 Atualização automática das cotações
 
-⭐ Lista de favoritos
-
 🔍 Pesquisa de moedas
-
-🌗 Tema claro e escuro
 
 🧭 Navegação fluida com Expo Router
 
@@ -48,8 +49,6 @@ E depois adicione assim:
 </p>
 
 
-(Quando você enviar as imagens, posso deixar tudo prontinho no padrão.)
-
 🚀 Tecnologias
 
 React Native (Expo)
@@ -66,7 +65,7 @@ Context API
 
 AsyncStorage
 
-API de criptomoedas (Binance / CoinGecko)
+API de criptomoedas (Binance)
 
 ⚙️ Como rodar o projeto
 1. Instale as dependências
@@ -96,15 +95,6 @@ finance-coins/
 ├── assets/                # Imagens e ícones
 └── App.tsx
 
-🔧 Variáveis de ambiente
-
-Crie .env:
-
-EXPO_PUBLIC_API_URL=https://sua-api.com
-
-🧽 Reset do projeto (opcional)
-npm run reset-project
-
 📚 Documentação recomendada
 
 Expo: https://docs.expo.dev
@@ -115,12 +105,9 @@ Tutorial oficial: https://docs.expo.dev/tutorial/introduction/
 
 👤 Autor
 
-Jonas — Full Stack Developer
-Focado em entregar soluções eficientes com React, Node.js e tecnologias modernas.
+Jones Lima — Full Stack Developer
 
-GitHub: https://github.com/seu-usuario
-
-LinkedIn: https://linkedin.com/in/seu-perfil
+GitHub: https://github.com/jonesrasta
 
 🪪 Licença
 
