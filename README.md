@@ -1,50 +1,127 @@
-# Welcome to your Expo app 👋
+💰 Finance Coins
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+Aplicativo mobile para monitoramento de criptomoedas, cotação em tempo real, gráficos dinâmicos e acompanhamento financeiro. Construído com foco em velocidade, experiência fluida e interface moderna.
 
-## Get started
+🏷️ Badges
+<p align="left"> <img src="https://img.shields.io/badge/Expo-000000?style=for-the-badge&logo=expo" /> <img src="https://img.shields.io/badge/React_Native-20232A?style=for-the-badge&logo=react&logoColor=61DAFB" /> <img src="https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white" /> <img src="https://img.shields.io/badge/Android-3DDC84?style=for-the-badge&logo=android&logoColor=white" /> <img src="https://img.shields.io/badge/iOS-000000?style=for-the-badge&logo=apple&logoColor=white" /> </p>
+📱 Funcionalidades
 
-1. Install dependencies
+📊 Dashboard com saldo total e variação do mercado
 
-   ```bash
-   npm install
-   ```
+💹 Gráficos dinâmicos das criptomoedas mais populares
 
-2. Start the app
+🔄 Atualização automática das cotações
 
-   ```bash
-   npx expo start
-   ```
+⭐ Lista de favoritos
 
-In the output, you'll find options to open the app in a
+🔍 Pesquisa de moedas
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
+🌗 Tema claro e escuro
 
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
+🧭 Navegação fluida com Expo Router
 
-## Get a fresh project
+⚡ Uso otimizado de estado com TypeScript + Hooks
 
-When you're ready, run:
+🎨 Design limpo com ícones de criptomoedas em alta qualidade
 
-```bash
+🖼️ Screenshots
+
+Organize sua pasta assim:
+
+assets/screens/
+   dashboard.png
+   coin-details.png
+   favorites.png
+   chart.png
+
+
+E depois adicione assim:
+
+<p align="center">
+  <img src="./assets/screens/dashboard.png" width="280" />
+  <img src="./assets/screens/coin-details.png" width="280" />
+</p>
+
+<p align="center">
+  <img src="./assets/screens/chart.png" width="280" />
+  <img src="./assets/screens/favorites.png" width="280" />
+</p>
+
+
+(Quando você enviar as imagens, posso deixar tudo prontinho no padrão.)
+
+🚀 Tecnologias
+
+React Native (Expo)
+
+TypeScript
+
+Expo Router
+
+Axios
+
+React Native Reanimated
+
+Context API
+
+AsyncStorage
+
+API de criptomoedas (Binance / CoinGecko)
+
+⚙️ Como rodar o projeto
+1. Instale as dependências
+npm install
+
+2. Inicie o app
+npx expo start
+
+
+Abra em:
+
+Expo Go
+
+Build de desenvolvimento
+
+Emulador Android
+
+Simulador iOS
+
+📂 Estrutura do projeto
+finance-coins/
+│
+├── app/                   # Telas e rotas
+├── components/            # Componentes reutilizáveis
+├── hooks/                 # Hooks customizados
+├── services/              # Conexão com APIs
+├── assets/                # Imagens e ícones
+└── App.tsx
+
+🔧 Variáveis de ambiente
+
+Crie .env:
+
+EXPO_PUBLIC_API_URL=https://sua-api.com
+
+🧽 Reset do projeto (opcional)
 npm run reset-project
-```
 
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
+📚 Documentação recomendada
 
-## Learn more
+Expo: https://docs.expo.dev
 
-To learn more about developing your project with Expo, look at the following resources:
+Expo Router: https://docs.expo.dev/router/introduction/
 
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
+Tutorial oficial: https://docs.expo.dev/tutorial/introduction/
 
-## Join the community
+👤 Autor
 
-Join our community of developers creating universal apps.
+Jonas — Full Stack Developer
+Focado em entregar soluções eficientes com React, Node.js e tecnologias modernas.
 
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+GitHub: https://github.com/seu-usuario
+
+LinkedIn: https://linkedin.com/in/seu-perfil
+
+🪪 Licença
+
+Projeto licenciado sob MIT.
