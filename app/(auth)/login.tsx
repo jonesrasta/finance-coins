@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { useGoogleAuth } from "@/services/authService";
 import {
   View,
   Text,
@@ -19,10 +20,19 @@ export default function Login() {
   const [password, setPassword] = useState("");
   const router = useRouter();
 
+  const { handleGoogleLogin, response } = useGoogleAuth();
+
+  // Corrigido (evita erro)
   const handleSignIn = () => {
-    // Aqui você pode colocar lógica de autenticação antes, se quiser
-    router.push("/home"); // navega para a rota 'home'
+    router.push("/home");
   };
+
+  // Login Google → redirect
+  useEffect(() => {
+    if (response?.type === "success") {
+      router.push("/home");
+    }
+  }, [response]);
 
   return (
     <LinearGradient
@@ -30,58 +40,51 @@ export default function Login() {
       style={styles.container}
     >
       <View style={{ flex: 1 }}>
-          <BackButton
-            style={{
-              position: "absolute",
-              top: -28,
-              left: -10,
-              backgroundColor: "rgba(48, 48, 48, 0.2)",
-            }}
-          />
+        <BackButton
+          style={{
+            position: "absolute",
+            top: -28,
+            left: -10,
+            backgroundColor: "rgba(48, 48, 48, 0.2)",
+          }}
+        />
       </View>
+
       <SafeAreaView>
         <View>
-          {/* Logo */}
           <Image
-            source={require("../../assets/images/financecoins.webp")} // substitua pelo seu logo
+            source={require("../../assets/images/financecoins.webp")}
             style={styles.logo}
             resizeMode="contain"
           />
 
-          {/* Título */}
           <CustomText weight="Medium" style={styles.title}>
             Sign in to Your Account
           </CustomText>
 
-          {/* Input Email */}
           <CustomText weight="Medium" style={styles.label}>
             Email Address
           </CustomText>
-          <CustomText weight="Regular">
-            <TextInput
-              placeholder="Enter your email"
-              placeholderTextColor="#7c7c7c9f"
-              style={styles.input}
-              value={email}
-              onChangeText={setEmail}
-            />
-          </CustomText>
+          <TextInput
+            placeholder="Enter your email"
+            placeholderTextColor="#7c7c7c9f"
+            style={styles.input}
+            value={email}
+            onChangeText={setEmail}
+          />
 
-          {/* Input Senha */}
           <CustomText weight="Medium" style={styles.label}>
             Password
           </CustomText>
-          <CustomText weight="Regular">
-            <TextInput
-              placeholder="Enter your password"
-              placeholderTextColor="#7c7c7c9f"
-              style={styles.input}
-              value={password}
-              secureTextEntry
-              onChangeText={setPassword}
-            />
-          </CustomText>
-          {/* Remember + Forgot */}
+          <TextInput
+            placeholder="Enter your password"
+            placeholderTextColor="#7c7c7c9f"
+            style={styles.input}
+            value={password}
+            secureTextEntry
+            onChangeText={setPassword}
+          />
+
           <View style={styles.options}>
             <View style={styles.rememberContainer}>
               <TouchableOpacity style={styles.checkbox} />
@@ -89,6 +92,7 @@ export default function Login() {
                 Remember
               </CustomText>
             </View>
+
             <TouchableOpacity>
               <CustomText weight="Regular" style={styles.forgotText}>
                 Forgot Password ?
@@ -97,13 +101,15 @@ export default function Login() {
           </View>
 
           {/* Botão Sign In */}
-          <TouchableOpacity style={styles.signInButton} onPress={handleSignIn}>
+          <TouchableOpacity
+            style={styles.signInButton}
+            onPress={handleSignIn}
+          >
             <CustomText weight="Bold" style={styles.signInText}>
               Sign In
             </CustomText>
           </TouchableOpacity>
 
-          {/* Divider */}
           <View style={styles.dividerContainer}>
             <View style={styles.dividerLine} />
             <CustomText weight="Medium" style={styles.orText}>
@@ -117,7 +123,12 @@ export default function Login() {
             <TouchableOpacity style={styles.socialButton}>
               <Ionicons name="logo-apple" size={44} color="#828282" />
             </TouchableOpacity>
-            <TouchableOpacity style={styles.socialButton}>
+
+            {/* GOOGLE FUNCIONANDO */}
+            <TouchableOpacity
+              style={styles.socialButton}
+              onPress={handleGoogleLogin}
+            >
               <Image
                 source={require("../../assets/images/icon/google.png")}
                 style={{ width: 34, height: 34, margin: 5 }}
@@ -126,7 +137,6 @@ export default function Login() {
             </TouchableOpacity>
           </View>
 
-          {/* Sign up */}
           <CustomText weight="Medium" style={styles.footerText}>
             Don’t have an account?{" "}
             <Text style={styles.signUpText}>Sign up</Text>
